@@ -3,6 +3,7 @@ import { TopNav, BottomNav } from "../../components/Nav";
 import { Poster } from "../../components/Poster";
 import { Icon } from "../../components/Icon";
 
+export function generateStaticParams() { return [{ id: "1" }, { id: "2" }, { id: "3" }]; }
 export default function Details() {
   return (
     <div className="min-h-screen pb-24 md:pb-8">

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Icon } from "../../components/Icon";
 
+export function generateStaticParams() { return [{ id: "1" }, { id: "2" }, { id: "3" }]; }
 export default function Player() {
   return (
     <div className="fixed inset-0 bg-black flex items-center justify-center overflow-hidden">

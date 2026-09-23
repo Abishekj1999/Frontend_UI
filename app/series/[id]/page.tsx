@@ -9,6 +9,7 @@ const episodes = Array.from({ length: 8 }, (_, i) => ({
   desc: "A chance encounter forces our hero to reconsider everything they thought they knew about the past.",
 }));
 
+export function generateStaticParams() { return [{ id: "1" }, { id: "2" }, { id: "3" }]; }
 export default function SeriesDetail() {
   return (
     <div className="min-h-screen pb-24 md:pb-8">
