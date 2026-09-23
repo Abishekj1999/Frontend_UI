@@ -1,14 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0b0b10;
+  --background: #0a0a10;
   --foreground: #ffffff;
   --nila: #E6578A;
   --nila-dark: #b83e6c;
-  --nila-light: #ff7ba7;
-  --surface: #16161f;
-  --surface-2: #1f1f2b;
+  --nila-light: #ff9dbe;
+  --nila-2: #ff7ba7;
+  --plum: #7a1e46;
+  --surface: #14141d;
+  --surface-2: #1c1c28;
+  --surface-3: #262632;
+  --line: rgba(255, 255, 255, 0.06);
+  --line-2: rgba(255, 255, 255, 0.10);
   --muted: #8b8b99;
+  --muted-2: #b0b0bd;
+
+  --font-display: "Bricolage Grotesque", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
 @theme inline {
@@ -17,17 +27,30 @@
   --color-nila: var(--nila);
   --color-nila-dark: var(--nila-dark);
   --color-nila-light: var(--nila-light);
+  --color-nila-2: var(--nila-2);
+  --color-plum: var(--plum);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-line: var(--line);
+  --color-line-2: var(--line-2);
   --color-muted: var(--muted);
+  --color-muted-2: var(--muted-2);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
 }
 
 html, body {
   background: var(--background);
   color: var(--foreground);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font-body);
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
+
+.font-display { font-family: var(--font-display); letter-spacing: -0.02em; }
+.font-mono { font-family: var(--font-mono); }
 
 ::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: transparent; }
@@ -37,7 +60,14 @@ html, body {
 .hide-scrollbar::-webkit-scrollbar { display: none; }
 .hide-scrollbar { scrollbar-width: none; }
 
-.nila-gradient { background: linear-gradient(135deg, #E6578A 0%, #b83e6c 100%); }
-.nila-glow { box-shadow: 0 0 40px rgba(230, 87, 138, 0.35); }
-.poster-gradient { background: linear-gradient(180deg, transparent 0%, rgba(11,11,16,0.6) 60%, #0b0b10 100%); }
-.hero-gradient { background: linear-gradient(180deg, transparent 40%, rgba(11,11,16,0.8) 75%, #0b0b10 100%); }
+.nila-gradient { background: linear-gradient(135deg, #ff7ba7 0%, #E6578A 50%, #b83e6c 100%); }
+.nila-glow { box-shadow: 0 8px 32px -8px rgba(230, 87, 138, 0.5); }
+.nila-text { background: linear-gradient(90deg, #ff9dbe, #E6578A); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+.glass { background: rgba(28, 28, 40, 0.6); backdrop-filter: blur(20px); border: 1px solid var(--line-2); }
+.glass-dark { background: rgba(10, 10, 16, 0.7); backdrop-filter: blur(20px); border: 1px solid var(--line); }
+
+.poster-gradient { background: linear-gradient(180deg, transparent 0%, rgba(10,10,16,0.7) 60%, #0a0a10 100%); }
+.hero-gradient { background: linear-gradient(180deg, transparent 40%, rgba(10,10,16,0.85) 78%, #0a0a10 100%); }
+
+.eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--nila-2); }

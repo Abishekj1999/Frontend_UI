@@ -2,31 +2,32 @@ import Link from "next/link";
 
 export default function Splash() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
-      <div className="absolute inset-0 nila-gradient opacity-90" />
-      <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 50% 40%, rgba(255,255,255,0.25), transparent 60%)" }} />
-      <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-white/10 blur-3xl" />
-      <div className="absolute -bottom-40 -right-40 w-96 h-96 rounded-full bg-black/30 blur-3xl" />
+    <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-background">
+      {/* Ambient */}
+      <div className="absolute inset-0 nila-gradient opacity-80" />
+      <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 50% 40%, rgba(255,255,255,0.28), transparent 55%)" }} />
+      <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full bg-white/10 blur-3xl" />
+      <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-black/30 blur-3xl" />
+      <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at bottom, rgba(10,10,16,0.6), transparent 60%)" }} />
 
+      {/* Content */}
       <div className="relative z-10 flex flex-col items-center">
-        <div className="w-28 h-28 rounded-3xl bg-white flex items-center justify-center mb-6 shadow-2xl">
-          <svg width="72" height="72" viewBox="0 0 40 40">
-            <path d="M14 12 L14 28 L18 28 L18 20 L26 28 L26 12 L22 12 L22 20 L14 12 Z" fill="#E6578A"/>
-          </svg>
+        <div className="w-28 h-28 rounded-[28px] bg-white/95 flex items-center justify-center mb-8 shadow-2xl backdrop-blur">
+          <span className="font-display font-bold text-6xl text-nila">N</span>
         </div>
-        <h1 className="text-5xl font-bold tracking-tight text-white mb-2">Nila OTT</h1>
-        <p className="text-white/80 text-sm mb-16">Stream. Watch. Enjoy.</p>
+        <h1 className="font-display font-bold text-6xl tracking-tighter text-white mb-2">Nila</h1>
+        <p className="font-mono text-xs uppercase tracking-[0.35em] text-white/85 mb-20">Stream · Watch · Enjoy</p>
 
-        <div className="flex gap-1.5 mb-8">
+        <div className="flex gap-1.5 mb-10">
           {[0, 1, 2].map((i) => (
-            <div key={i} className="w-2 h-2 rounded-full bg-white/70 animate-pulse" style={{ animationDelay: `${i * 200}ms` }} />
+            <div key={i} className="w-1.5 h-1.5 rounded-full bg-white/80 animate-pulse" style={{ animationDelay: `${i * 200}ms` }} />
           ))}
         </div>
 
-        <Link href="/login" className="text-white/70 text-xs underline">Continue →</Link>
+        <Link href="/welcome" className="font-mono text-xs uppercase tracking-widest text-white/70 hover:text-white">Continue →</Link>
       </div>
 
-      <div className="absolute bottom-8 text-white/60 text-xs">v1.0.0 · © 2026 Nila</div>
+      <div className="absolute bottom-8 font-mono text-[10px] tracking-wider text-white/50">v1.0.0 · © 2026 NILA</div>
     </div>
   );
 }

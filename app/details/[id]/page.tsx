@@ -1,90 +1,107 @@
 import Link from "next/link";
 import { TopNav, BottomNav } from "../../components/Nav";
 import { Poster } from "../../components/Poster";
+import { Icon } from "../../components/Icon";
 
 export default function Details() {
   return (
     <div className="min-h-screen pb-24 md:pb-8">
       <TopNav />
 
-      <section className="relative h-[65vh]">
+      <section className="relative h-[70vh]">
         <div className="absolute inset-0 nila-gradient" />
-        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 70% 30%, rgba(255,255,255,0.2), transparent 60%)" }} />
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 70% 30%, rgba(255,255,255,0.25), transparent 60%)" }} />
         <div className="absolute inset-0 hero-gradient" />
-        <div className="relative z-10 h-full flex items-end pb-10 px-4 md:px-12 max-w-[1400px] mx-auto">
-          <div className="flex gap-6 items-end w-full">
-            <div className="hidden md:block w-56 shrink-0 -mb-16 rounded-xl overflow-hidden shadow-2xl">
-              <Poster title="" id={11} />
+
+        <div className="relative z-10 h-full flex items-end pb-12 px-4 md:px-12 max-w-[1440px] mx-auto">
+          <div className="flex gap-8 items-end w-full">
+            <div className="hidden md:block w-60 shrink-0 -mb-20 rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+              <Poster id={11} />
             </div>
             <div className="flex-1">
-              <h1 className="text-4xl md:text-6xl font-bold mb-3">The Midnight Shore</h1>
-              <div className="flex flex-wrap items-center gap-3 text-sm text-white/85 mb-4">
-                <span className="text-nila-light font-semibold">★ 8.7</span>
-                <span>2026</span><span>·</span><span>Thriller · Drama</span><span>·</span><span>2h 14m</span>
-                <span className="px-1.5 py-0.5 border border-white/40 text-[10px]">U/A 16+</span>
-                <span className="px-2 py-0.5 bg-white/15 rounded text-[10px]">4K HDR</span>
-                <span className="px-2 py-0.5 bg-white/15 rounded text-[10px]">Dolby Atmos</span>
+              <span className="eyebrow">◆ Nila Original</span>
+              <h1 className="font-display font-bold text-5xl md:text-7xl tracking-tighter leading-none my-3">The Midnight Shore</h1>
+              <div className="flex flex-wrap items-center gap-3 text-sm text-white/90 mb-5">
+                <span className="text-nila-light font-semibold text-base">★ 8.7</span>
+                <span className="text-white/40">·</span>
+                <span>2026</span><span className="text-white/40">·</span><span>Thriller · Drama</span>
+                <span className="text-white/40">·</span><span>2h 14m</span>
+                <span className="px-1.5 py-0.5 border border-white/40 text-[10px] rounded">U/A 16+</span>
+                <span className="px-2 py-0.5 bg-white/15 rounded text-[10px] font-mono">4K HDR</span>
+                <span className="px-2 py-0.5 bg-white/15 rounded text-[10px] font-mono">DOLBY ATMOS</span>
               </div>
               <div className="flex gap-3 flex-wrap">
-                <Link href="/player/1" className="px-6 py-3 bg-white text-black rounded-full font-semibold text-sm flex items-center gap-2">▶ Play</Link>
-                <Link href="/player/1" className="px-6 py-3 bg-white/15 border border-white/25 rounded-full text-sm">▶ Trailer</Link>
-                <button className="w-11 h-11 rounded-full bg-white/15 border border-white/25">+</button>
-                <button className="w-11 h-11 rounded-full bg-white/15 border border-white/25">↓</button>
-                <button className="w-11 h-11 rounded-full bg-white/15 border border-white/25">↗</button>
+                <Link href="/player/1" className="px-8 py-3.5 bg-white text-black rounded-full font-semibold text-sm flex items-center gap-2"><Icon name="play" size={16} stroke={0} className="fill-black" /> Play</Link>
+                <Link href="/player/1" className="px-6 py-3.5 bg-white/15 backdrop-blur border border-white/25 rounded-full text-sm flex items-center gap-2"><Icon name="play" size={14} /> Trailer</Link>
+                <button className="w-12 h-12 rounded-full bg-white/15 backdrop-blur border border-white/25 flex items-center justify-center"><Icon name="plus" size={18} /></button>
+                <button className="w-12 h-12 rounded-full bg-white/15 backdrop-blur border border-white/25 flex items-center justify-center"><Icon name="download" size={18} /></button>
+                <button className="w-12 h-12 rounded-full bg-white/15 backdrop-blur border border-white/25 flex items-center justify-center"><Icon name="share" size={18} /></button>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <div className="max-w-[1400px] mx-auto px-4 md:px-12 py-8 md:pt-20">
-        <div className="grid md:grid-cols-3 gap-8">
+      <div className="max-w-[1440px] mx-auto px-4 md:px-12 py-10 md:pt-24">
+        <div className="grid md:grid-cols-3 gap-10">
           <div className="md:col-span-2">
-            <h2 className="text-xl font-bold mb-2">Synopsis</h2>
-            <p className="text-white/80 mb-6">A coastal detective uncovers a decades-old conspiracy that reaches into the heart of the city's most powerful families. As secrets surface, allegiances shatter and the line between justice and revenge blurs beyond recognition.</p>
+            <h2 className="font-display font-bold text-2xl mb-3">Synopsis</h2>
+            <p className="text-muted-2 mb-8 leading-relaxed">A coastal detective uncovers a decades-old conspiracy that reaches into the heart of the city's most powerful families. As secrets surface, allegiances shatter and the line between justice and revenge blurs beyond recognition.</p>
 
-            <h2 className="text-xl font-bold mb-3">Cast</h2>
-            <div className="flex gap-4 overflow-x-auto hide-scrollbar mb-8">
-              {["Vijay S.", "Trisha", "Fahadh F.", "Nayanthara", "Suriya"].map((n, i) => (
+            <h2 className="font-display font-bold text-2xl mb-4">Cast</h2>
+            <div className="flex gap-6 overflow-x-auto hide-scrollbar mb-10">
+              {["Vijay S.", "Trisha", "Fahadh F.", "Nayanthara", "Suriya", "Kamal H."].map((n, i) => (
                 <div key={n} className="text-center shrink-0 w-20">
-                  <div className="w-16 h-16 rounded-full mx-auto mb-2" style={{ background: `linear-gradient(135deg, hsl(${i * 70}, 60%, 55%), hsl(${i * 70}, 60%, 30%))` }} />
+                  <div className="w-20 h-20 rounded-full mx-auto mb-2 shadow-lg" style={{ background: `linear-gradient(135deg, hsl(${i * 60}, 60%, 55%), hsl(${i * 60}, 60%, 30%))` }} />
                   <p className="text-xs font-medium">{n}</p>
+                  <p className="text-[10px] text-muted">Actor</p>
                 </div>
               ))}
             </div>
 
-            <h2 className="text-xl font-bold mb-3">Reviews</h2>
+            <h2 className="font-display font-bold text-2xl mb-4">Reviews</h2>
             <div className="space-y-3">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="p-4 rounded-xl bg-surface border border-white/5">
+              {[
+                { u: "Aravind", r: 5, t: "Absolutely gripping from start to finish. The cinematography is stunning and the performances are top-tier." },
+                { u: "Priya", r: 4, t: "A slow burn but rewarding — the final twist genuinely surprised me." },
+                { u: "Kishore", r: 5, t: "Best Tamil thriller of the year. Watch it in Atmos if you can." },
+              ].map((rv, i) => (
+                <div key={i} className="p-5 rounded-2xl bg-surface border border-line">
                   <div className="flex items-center gap-3 mb-2">
-                    <div className="w-8 h-8 rounded-full nila-gradient" />
+                    <div className="w-9 h-9 rounded-full nila-gradient font-display font-bold flex items-center justify-center text-sm">{rv.u[0]}</div>
                     <div>
-                      <p className="text-sm font-semibold">User {i}</p>
-                      <p className="text-[10px] text-white/50">★★★★★ · 2 days ago</p>
+                      <p className="text-sm font-semibold">{rv.u}</p>
+                      <p className="text-[11px] text-muted">{"★".repeat(rv.r)}{"☆".repeat(5-rv.r)} · 2 days ago</p>
                     </div>
                   </div>
-                  <p className="text-sm text-white/75">Absolutely gripping from start to finish. The cinematography is stunning and the performances are top-tier.</p>
+                  <p className="text-sm text-muted-2 leading-relaxed">{rv.t}</p>
                 </div>
               ))}
             </div>
           </div>
 
           <aside className="space-y-6">
-            <div className="p-4 rounded-xl bg-surface border border-white/5">
-              <h3 className="font-semibold mb-3">Details</h3>
-              <dl className="space-y-2 text-sm">
-                <div className="flex justify-between"><dt className="text-white/50">Director</dt><dd>Mani Ratnam</dd></div>
-                <div className="flex justify-between"><dt className="text-white/50">Language</dt><dd>Tamil</dd></div>
-                <div className="flex justify-between"><dt className="text-white/50">Subtitles</dt><dd>EN, HI, TE</dd></div>
-                <div className="flex justify-between"><dt className="text-white/50">Audio</dt><dd>TA, HI, EN</dd></div>
-                <div className="flex justify-between"><dt className="text-white/50">Release</dt><dd>Sep 15, 2026</dd></div>
+            <div className="p-5 rounded-2xl bg-surface border border-line">
+              <h3 className="font-display font-bold mb-4">Details</h3>
+              <dl className="space-y-3 text-sm">
+                {[
+                  ["Director", "Mani Ratnam"], ["Writer", "Jeyamohan"], ["Studio", "Nila Originals"],
+                  ["Language", "Tamil"], ["Subtitles", "EN, HI, TE, KN"], ["Audio", "TA, HI, EN"],
+                  ["Release", "Sep 15, 2026"], ["Runtime", "2h 14m"],
+                ].map(([k, v]) => (
+                  <div key={k} className="flex justify-between">
+                    <dt className="text-muted">{k}</dt>
+                    <dd className="font-medium">{v}</dd>
+                  </div>
+                ))}
               </dl>
             </div>
             <div>
-              <h3 className="font-semibold mb-3">More Like This</h3>
-              <div className="grid grid-cols-2 gap-2">
-                {[1, 2, 3, 4].map((i) => <Poster key={i} title={`Similar ${i}`} id={i * 9} />)}
+              <h3 className="font-display font-bold mb-3">More Like This</h3>
+              <div className="grid grid-cols-2 gap-3">
+                {["Vikram", "Kaithi", "Master", "Asuran"].map((t, i) => (
+                  <div key={i}><Poster title={t} id={i * 9} /></div>
+                ))}
               </div>
             </div>
           </aside>

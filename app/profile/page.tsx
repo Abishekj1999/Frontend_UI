@@ -1,82 +1,101 @@
 import Link from "next/link";
 import { TopNav, BottomNav } from "../components/Nav";
-
-type SettingItem = { label: string; meta?: string; href?: string };
-const settings: { group: string; items: SettingItem[] }[] = [
-  { group: "Account", items: [
-    { label: "Edit Profile", meta: "Name, email, phone", href: "#" },
-    { label: "Manage Profiles", meta: "3 profiles", href: "#" },
-    { label: "Subscription", meta: "Premium · Renews Oct 12", href: "/subscription" },
-    { label: "Payment Methods", meta: "•••• 4242", href: "#" },
-  ]},
-  { group: "Playback", items: [
-    { label: "Video Quality", meta: "Auto (4K)" },
-    { label: "Download Quality", meta: "HD" },
-    { label: "Audio Language", meta: "Tamil" },
-    { label: "Subtitles", meta: "English" },
-    { label: "Autoplay next episode", meta: "On" },
-  ]},
-  { group: "Preferences", items: [
-    { label: "App Language", meta: "English" },
-    { label: "Notifications", meta: "On", href: "/notifications" },
-    { label: "Parental Controls", meta: "Off" },
-    { label: "Data Saver", meta: "Off" },
-  ]},
-  { group: "Support", items: [
-    { label: "Help Center" },
-    { label: "Contact Us" },
-    { label: "About Nila OTT", meta: "v1.0.0" },
-    { label: "Privacy Policy" },
-    { label: "Terms of Service" },
-  ]},
-];
+import { SettingsList, SectionLabel } from "../components/ListRow";
+import { Icon } from "../components/Icon";
 
 export default function Profile() {
   return (
     <div className="min-h-screen pb-24 md:pb-8">
       <TopNav />
-      <div className="max-w-4xl mx-auto px-4 md:px-12 py-6">
-        <div className="flex items-center gap-4 mb-8">
-          <div className="w-20 h-20 rounded-full nila-gradient nila-glow flex items-center justify-center text-3xl font-bold">S</div>
-          <div className="flex-1">
-            <h1 className="text-2xl font-bold">Shalini R.</h1>
-            <p className="text-sm text-white/60">shaliniravi1308@gmail.com</p>
-            <span className="inline-block mt-1 text-[10px] font-bold bg-nila px-2 py-0.5 rounded">PREMIUM</span>
+      <div className="max-w-3xl mx-auto px-4 md:px-6 py-8">
+        {/* Hero card */}
+        <div className="relative overflow-hidden rounded-3xl p-6 md:p-8 mb-8 border border-line" style={{ background: "linear-gradient(135deg, rgba(230,87,138,0.15), rgba(230,87,138,0.02))" }}>
+          <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full nila-gradient opacity-30 blur-3xl" />
+          <div className="relative flex items-center gap-5">
+            <div className="w-20 h-20 md:w-24 md:h-24 rounded-3xl nila-gradient nila-glow flex items-center justify-center font-display font-bold text-4xl">S</div>
+            <div className="flex-1 min-w-0">
+              <h1 className="font-display font-bold text-2xl md:text-3xl tracking-tight">Shalini R.</h1>
+              <p className="text-sm text-muted truncate">shaliniravi1308@gmail.com</p>
+              <div className="flex items-center gap-2 mt-2">
+                <span className="inline-flex items-center gap-1 text-[10px] font-mono font-bold bg-nila px-2 py-0.5 rounded tracking-widest">
+                  <Icon name="crown" size={10} /> PREMIUM
+                </span>
+                <span className="text-[11px] text-muted">Renews Oct 12</span>
+              </div>
+            </div>
+            <Link href="/account/edit" className="p-2.5 rounded-full bg-white/10 hover:bg-white/20"><Icon name="edit" size={16} /></Link>
           </div>
-          <button className="px-4 py-2 rounded-full bg-surface border border-white/10 text-sm">Edit</button>
-        </div>
 
-        {/* Profile switcher */}
-        <div className="mb-8">
-          <h2 className="text-sm font-semibold text-white/60 mb-3">Who's watching?</h2>
-          <div className="flex gap-3">
-            {["S", "R", "K", "+"].map((p, i) => (
-              <div key={i} className="text-center">
-                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center font-bold text-xl mb-1 ${i === 0 ? "nila-gradient nila-glow" : "bg-surface border border-white/10"}`}>{p}</div>
-                <p className="text-xs">{["Shalini", "Ravi", "Kids", "Add"][i]}</p>
+          <div className="mt-6 pt-6 border-t border-white/10 grid grid-cols-3 divide-x divide-white/10">
+            {[["124", "Watched"], ["36", "In list"], ["8", "Downloads"]].map(([n, l]) => (
+              <div key={l} className="text-center">
+                <p className="font-display font-bold text-2xl">{n}</p>
+                <p className="text-[11px] font-mono uppercase tracking-wider text-muted mt-0.5">{l}</p>
               </div>
             ))}
           </div>
         </div>
 
-        {settings.map((g) => (
-          <div key={g.group} className="mb-6">
-            <h3 className="text-xs font-bold text-white/50 uppercase tracking-wider mb-2 px-2">{g.group}</h3>
-            <div className="rounded-2xl bg-surface border border-white/5 divide-y divide-white/5">
-              {g.items.map((it) => {
-                const Row = (
-                  <div className="flex items-center justify-between px-4 py-3.5 hover:bg-surface-2">
-                    <span className="text-sm">{it.label}</span>
-                    <span className="text-sm text-white/50 flex items-center gap-2">{it.meta}<span className="text-white/30">›</span></span>
-                  </div>
-                );
-                return it.href ? <Link key={it.label} href={it.href}>{Row}</Link> : <div key={it.label}>{Row}</div>;
-              })}
+        {/* Profile switcher */}
+        <div className="mb-6">
+          <div className="flex items-center justify-between mb-4 px-2">
+            <h3 className="eyebrow">Profiles</h3>
+            <Link href="/welcome" className="text-xs text-nila-light font-mono">Manage</Link>
+          </div>
+          <div className="flex gap-4 overflow-x-auto hide-scrollbar pb-2">
+            {[
+              { l: "Shalini", i: "S", g: "linear-gradient(135deg,#ff9dbe,#E6578A)", active: true },
+              { l: "Ravi", i: "R", g: "linear-gradient(135deg,#4a5cf8,#1e2a7a)" },
+              { l: "Kids", i: "K", g: "linear-gradient(135deg,#f59e0b,#78350f)" },
+            ].map((p) => (
+              <div key={p.l} className="text-center shrink-0">
+                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center font-display font-bold text-xl mb-1 ${p.active ? "nila-glow ring-2 ring-white/50" : ""}`} style={{ background: p.g }}>{p.i}</div>
+                <p className="text-xs">{p.l}</p>
+              </div>
+            ))}
+            <div className="text-center shrink-0">
+              <div className="w-16 h-16 rounded-2xl border-2 border-dashed border-white/15 flex items-center justify-center text-white/40 mb-1"><Icon name="plus" /></div>
+              <p className="text-xs text-muted">Add</p>
             </div>
           </div>
-        ))}
+        </div>
 
-        <button className="w-full py-3.5 rounded-2xl bg-surface border border-red-500/30 text-red-400 font-semibold text-sm mt-4">Sign Out</button>
+        <SectionLabel>Watching</SectionLabel>
+        <SettingsList items={[
+          { label: "Continue Watching", icon: "play", meta: "4 titles", href: "/continue-watching" },
+          { label: "My List", icon: "heart", meta: "36 titles", href: "/mylist" },
+          { label: "Watch History", icon: "history", meta: "124 items", href: "/history" },
+          { label: "Downloads", icon: "download", meta: "8 · 4.3 GB", href: "/downloads" },
+        ]} />
+
+        <SectionLabel>Account</SectionLabel>
+        <SettingsList items={[
+          { label: "Edit Profile", icon: "user", href: "/account/edit" },
+          { label: "Change Password", icon: "key", href: "/account/password" },
+          { label: "Membership", icon: "crown", meta: "Premium", href: "/account/membership" },
+          { label: "Purchase History", icon: "card", href: "/account/purchases" },
+          { label: "Payment Methods", icon: "card", meta: "•••• 4242", href: "/payment" },
+        ]} />
+
+        <SectionLabel>App</SectionLabel>
+        <SettingsList items={[
+          { label: "Playback Settings", icon: "play", href: "/playback" },
+          { label: "Language", icon: "globe", meta: "English", href: "/language" },
+          { label: "App Settings", icon: "settings", href: "/app-settings" },
+          { label: "Notifications", icon: "bell", href: "/notifications" },
+        ]} />
+
+        <SectionLabel>Support</SectionLabel>
+        <SettingsList items={[
+          { label: "Help & Support", icon: "help", href: "/help" },
+          { label: "About Nila", icon: "info", meta: "v1.0.0", href: "/about" },
+        ]} />
+
+        <button className="w-full mt-8 py-4 rounded-2xl bg-surface border border-red-500/25 text-red-400 font-semibold text-sm flex items-center justify-center gap-2 hover:bg-red-500/5">
+          <Icon name="logout" size={16} /> Sign Out
+        </button>
+
+        <p className="text-center text-[11px] font-mono uppercase tracking-widest text-muted mt-8">Nila OTT · v1.0.0</p>
       </div>
       <BottomNav />
     </div>
